@@ -8,13 +8,13 @@ import java.util.List;
 
 public class DataBase {
 
-    private static List<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList();
 
-    public List<User> getClients() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setClients(List<User> clients) {
-        this.users = clients;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
