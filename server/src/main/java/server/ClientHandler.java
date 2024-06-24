@@ -3,6 +3,7 @@ package server;
 import server.Socket.SocketResponseSender;
 import shared.Request.RequestHandler;
 import shared.Request.SignUpRequest;
+import shared.Request.ValidUsernameRequest;
 import shared.Response.Response;
 import shared.Response.ResponseHandler;
 
@@ -32,6 +33,11 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleSignUpRequest(SignUpRequest signUpRequest) {
+        return null;
+    }
+
+    @Override
+    public Response handleValidUsernameRequest(ValidUsernameRequest validUsernameRequest) {
         return null;
     }
 }
