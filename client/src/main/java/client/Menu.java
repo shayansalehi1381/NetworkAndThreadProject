@@ -82,7 +82,8 @@ public class Menu implements ResponseHandler {
 
     @Override
     public void handleSignUpResponse(SignUpResponse signUpResponse) {
-        System.out.println("sdasdqw");
+        System.out.println("Your Account is Created!");
+        startMenu();
     }
 
     @Override

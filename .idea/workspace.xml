@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="382cc8a9-36b2-442f-869b-0c47645b9ba9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Socket/SocketRequestSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Socket/SocketRequestSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketResponseSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketResponseSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/ValidUsernameRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/ValidUsernameRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/SignUpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/SignUpResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ValidUsernameResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ValidUsernameResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +82,7 @@
       <workItem from="1719135217546" duration="5268000" />
       <workItem from="1719147476893" duration="6439000" />
       <workItem from="1719180278642" duration="11337000" />
-      <workItem from="1719515682082" duration="14418000" />
+      <workItem from="1719515682082" duration="14804000" />
     </task>
     <servers />
   </component>

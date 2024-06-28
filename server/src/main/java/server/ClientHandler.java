@@ -34,7 +34,8 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleSignUpRequest(SignUpRequest signUpRequest) {
-        System.out.println("recived");
+        User user = new User(signUpRequest.getUsername(),signUpRequest.getPassword());
+        dataBase.getUsers().add(user);
         return new SignUpResponse();
     }
 
