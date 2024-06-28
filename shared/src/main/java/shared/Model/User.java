@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-@JsonTypeName("user")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+
 public class User{
     private String username;
     private String password;

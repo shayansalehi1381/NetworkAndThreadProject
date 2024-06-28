@@ -1,6 +1,7 @@
 package server;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import shared.Model.User;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class DataBase {
 
-    private static final String FILE_PATH = "C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\users.json";
+    private static final String FILE_PATH = "users.json";
     private ObjectMapper objectMapper;
     private List<User> users = new ArrayList();
 
@@ -44,16 +45,12 @@ public class DataBase {
 
     public void loadUsers() {
         File file = new File(FILE_PATH);
-        if (file.exists()) {
-            try {
-                users = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, User.class));
-                System.out.println("Users loaded successfully.");
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Failed to load users from file.");
-            }
-        } else {
-            System.out.println("Users file does not exist.");
+        try {
+            TypeReference<List<User>> typeReference = new TypeReference<>() {
+            };
+            users = objectMapper.readValue(file, typeReference);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
