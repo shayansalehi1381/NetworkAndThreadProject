@@ -5,6 +5,8 @@ import shared.Request.*;
 import shared.Response.*;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -54,14 +56,29 @@ public class Menu implements ResponseHandler {
         if (ValidUsername(username)) {
             System.out.println("Choose your password:");
             String password = scanner.next();
+            String hashPass = hashPassword(password);
             try {
-                socketRequestSender.sendRequest(new SignUpRequest(username, password)).run(this);
+                socketRequestSender.sendRequest(new SignUpRequest(username, hashPass)).run(this);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
             System.out.println("Username already exists. Please choose another one.");
             signUp(scanner);
+        }
+    }
+    public  String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] passwordBytes = password.getBytes();
+            byte[] hashedPasswordBytes = md.digest(passwordBytes);
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedPasswordBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -71,7 +88,8 @@ public class Menu implements ResponseHandler {
         if (usernameExists(username)){
             System.out.println("Type your Password:");
             String password = scanner.next();
-            if (checkPassword(username,password)){
+            String hashPassword = hashPassword(password);
+            if (checkPassword(username,hashPassword)){
                 try {
                     socketRequestSender.sendRequest(new LoginRequest()).run(this);
                 } catch (IOException e) {
