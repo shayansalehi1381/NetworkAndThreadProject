@@ -6,6 +6,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public class SignUpResponse implements Response {
     @Override
     public void run(ResponseHandler responseHandler) {
-        responseHandler.handleHiResponse(this);
+        responseHandler.handleSignUpResponse(this);
     }
 }

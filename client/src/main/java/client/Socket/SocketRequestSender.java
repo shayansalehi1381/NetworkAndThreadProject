@@ -1,6 +1,7 @@
 package client.Socket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import shared.Response.Response;
 import shared.Request.Request;
 
@@ -20,13 +21,20 @@ public class SocketRequestSender {
         printStream = new PrintStream(socket.getOutputStream());
         scanner = new Scanner(socket.getInputStream());
         objectMapper = new ObjectMapper();
+        objectMapper.activateDefaultTyping(
+                BasicPolymorphicTypeValidator.builder().allowIfBaseType(Response.class).build(),
+                ObjectMapper.DefaultTyping.EVERYTHING);
     }
 
 
     public Response sendRequest(Request request) throws IOException {
         try {
+            String s = null;
             printStream.println(objectMapper.writeValueAsString(request));
-            return objectMapper.readValue(scanner.nextLine(), Response.class);
+            if (scanner.hasNextLine()){
+             s = scanner.nextLine();
+            }
+            return objectMapper.readValue(s, Response.class);
         } catch (Exception e) {
             System.out.println(e);
             close();

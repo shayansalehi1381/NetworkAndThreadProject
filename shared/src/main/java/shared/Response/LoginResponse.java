@@ -1,4 +1,12 @@
 package shared.Response;
 
-public class LoginResponse {
+
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("LoginResponse")
+public class LoginResponse implements Response{
+    @Override
+    public void run(ResponseHandler responseHandler) {
+        responseHandler.handleLoginResponse(this);
+    }
 }

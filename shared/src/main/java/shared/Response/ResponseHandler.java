@@ -1,5 +1,7 @@
 package shared.Response;
 
 public interface ResponseHandler {
-    void handleHiResponse(SignUpResponse signUpResponse);
+    void handleSignUpResponse(SignUpResponse signUpResponse);
+    void handleLoginResponse(LoginResponse loginResponse);
+    void handleValidUsernameResponse(ValidUsernameResponse validUsernameResponse);
 }

@@ -1,15 +1,19 @@
 package client;
 
 import client.Socket.SocketRequestSender;
+import shared.Request.LoginRequest;
+import shared.Request.SignUpRequest;
 import shared.Request.ValidUsernameRequest;
+import shared.Response.*;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu implements ResponseHandler {
 
     public SocketRequestSender socketRequestSender;
+    private boolean isUsernameValid = false;
     public Menu(SocketRequestSender socketRequestSender){
         this.socketRequestSender = socketRequestSender;
     }
@@ -47,10 +51,18 @@ public class Menu {
     private void signUp(Scanner scanner){
         System.out.println("Choose your Username:");
         String username = scanner.next();
-        ValidUsername(username);
-        System.out.println("Choose your password:");
-        String password = scanner.next();
-
+        if (ValidUsername(username)) {
+            System.out.println("Choose your password:");
+            String password = scanner.next();
+            try {
+                socketRequestSender.sendRequest(new SignUpRequest(username, password)).run(this);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.out.println("Username already exists. Please choose another one.");
+            signUp(scanner);
+        }
     }
 
     private void login(Scanner scanner){
@@ -58,11 +70,28 @@ public class Menu {
         String username = scanner.next();
     }
 
-    private void ValidUsername(String userName){
+    private boolean ValidUsername(String username){
         try {
-            socketRequestSender.sendRequest(new ValidUsernameRequest(userName));
+            ValidUsernameResponse response = (ValidUsernameResponse) socketRequestSender.sendRequest(new ValidUsernameRequest(username));
+            response.run(this);
+            return isUsernameValid;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void handleSignUpResponse(SignUpResponse signUpResponse) {
+        System.out.println("sdasdqw");
+    }
+
+    @Override
+    public void handleLoginResponse(LoginResponse loginResponse) {
+        System.out.println("asasasa");
+    }
+
+    @Override
+    public void handleValidUsernameResponse(ValidUsernameResponse validUsernameResponse) {
+        isUsernameValid = validUsernameResponse.valid;
     }
 }

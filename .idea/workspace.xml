@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="382cc8a9-36b2-442f-869b-0c47645b9ba9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/client/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/client/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/client/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Socket/SocketRequestSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Socket/SocketRequestSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketResponseSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketResponseSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Request/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Request/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Request/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Request/RequestHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/Response.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/ResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/ResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/ValidUsernameRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/ValidUsernameRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/SignUpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/SignUpResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ValidUsernameResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ValidUsernameResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,24 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "20",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.general"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.client">
     <configuration name="client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="client.Main" />
@@ -92,7 +94,8 @@
       <updated>1719135216330</updated>
       <workItem from="1719135217546" duration="5268000" />
       <workItem from="1719147476893" duration="6439000" />
-      <workItem from="1719180278642" duration="10894000" />
+      <workItem from="1719180278642" duration="11337000" />
+      <workItem from="1719515682082" duration="14418000" />
     </task>
     <servers />
   </component>
