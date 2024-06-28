@@ -1,9 +1,7 @@
 package client;
 
 import client.Socket.SocketRequestSender;
-import shared.Request.LoginRequest;
-import shared.Request.SignUpRequest;
-import shared.Request.ValidUsernameRequest;
+import shared.Request.*;
 import shared.Response.*;
 
 import java.io.IOException;
@@ -14,6 +12,8 @@ public class Menu implements ResponseHandler {
 
     public SocketRequestSender socketRequestSender;
     private boolean isUsernameValid = false;
+    private boolean isAbleToLogin = false;
+    private boolean isUsernameExists = true;//this is for Login
     public Menu(SocketRequestSender socketRequestSender){
         this.socketRequestSender = socketRequestSender;
     }
@@ -68,6 +68,25 @@ public class Menu implements ResponseHandler {
     private void login(Scanner scanner){
         System.out.println("Type your username:");
         String username = scanner.next();
+        if (usernameExists(username)){
+            System.out.println("Type your Password:");
+            String password = scanner.next();
+            if (checkPassword(username,password)){
+                try {
+                    socketRequestSender.sendRequest(new LoginRequest()).run(this);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else {
+                System.out.println("Wrong PassWord! try again.");
+                login(scanner);
+            }
+        }
+        else {
+            System.out.println("This Username does not Exist in the DataBase! try again.");
+            login(scanner);
+        }
     }
 
     private boolean ValidUsername(String username){
@@ -80,19 +99,50 @@ public class Menu implements ResponseHandler {
         }
     }
 
+    private boolean checkPassword(String username,String pass){
+        try {
+            socketRequestSender.sendRequest(new CheckPasswordRequest(username,pass)).run(this);
+            return isAbleToLogin;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public boolean usernameExists(String username){
+        try {
+            socketRequestSender.sendRequest(new UserNameExistRequest(username)).run(this);
+            return isUsernameExists;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void handleSignUpResponse(SignUpResponse signUpResponse) {
+        System.out.println("**************************************************");
         System.out.println("Your Account is Created!");
         startMenu();
     }
 
     @Override
     public void handleLoginResponse(LoginResponse loginResponse) {
-        System.out.println("asasasa");
+        System.out.println("**************************************************");
+        System.out.println("login Successful!");
     }
 
     @Override
     public void handleValidUsernameResponse(ValidUsernameResponse validUsernameResponse) {
         isUsernameValid = validUsernameResponse.valid;
+    }
+
+    @Override
+    public void handleUsernameExistResponse(UserNameExistResponse userNameExistResponse) {
+        isUsernameExists = userNameExistResponse.exists;
+    }
+
+    @Override
+    public void handleCheckPasswordResponse(CheckPasswordResponse checkPasswordResponse) {
+        isAbleToLogin = checkPasswordResponse.ableToLogin;
     }
 }

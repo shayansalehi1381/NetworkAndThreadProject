@@ -3,10 +3,7 @@ package server;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import server.Socket.SocketResponseSender;
 import shared.Model.User;
-import shared.Request.LoginRequest;
-import shared.Request.RequestHandler;
-import shared.Request.SignUpRequest;
-import shared.Request.ValidUsernameRequest;
+import shared.Request.*;
 import shared.Response.*;
 
 import java.io.IOException;
@@ -69,7 +66,34 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleLoginRequest(LoginRequest loginRequest) {
-        System.out.println("recived");
         return new LoginResponse();
+    }
+
+    @Override
+    public Response handleUsernameExistRequest(UserNameExistRequest userNameExistRequest) {
+        UserNameExistResponse userNameExistResponse = new UserNameExistResponse();
+        for (User user : dataBase.getUsers()){
+            if (userNameExistRequest.getUsername().equals(user.getUsername())){
+                userNameExistResponse.exists = true;
+                return userNameExistResponse;
+            }
+        }
+        userNameExistResponse.exists = false;
+        return userNameExistResponse;
+    }
+
+    @Override
+    public Response handleCheckPasswordRequest(CheckPasswordRequest checkPasswordRequest) {
+        CheckPasswordResponse checkPasswordResponse = new CheckPasswordResponse();
+        for (User user:dataBase.getUsers()){
+            if (checkPasswordRequest.getUsername().equals(user.getUsername())){
+                if (checkPasswordRequest.getPassword().equals(user.getPassword())){
+                     checkPasswordResponse.ableToLogin = true;
+                     return checkPasswordResponse;
+                }
+            }
+        }
+        checkPasswordResponse.ableToLogin = false;
+        return checkPasswordResponse;
     }
 }

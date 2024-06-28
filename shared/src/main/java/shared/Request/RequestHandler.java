@@ -7,4 +7,8 @@ public interface RequestHandler {
     Response handleValidUsernameRequest(ValidUsernameRequest validUsernameRequest);
 
     Response handleLoginRequest(LoginRequest loginRequest);
+
+    Response handleUsernameExistRequest(UserNameExistRequest userNameExistRequest);
+
+   Response handleCheckPasswordRequest(CheckPasswordRequest checkPasswordRequest);
 }
