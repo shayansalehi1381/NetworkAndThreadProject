@@ -15,7 +15,8 @@ public class SocketStarter extends Thread {
     @Override
     public void run() {
         try {
-            serverSocket = new ServerSocket(8080);
+            dataBase.loadUsers(); // Load users when the server starts
+            serverSocket = new ServerSocket(4321);
             while (true) {
                 Socket socket = serverSocket.accept();
                 new ClientHandler(new SocketResponseSender(socket), dataBase).start();

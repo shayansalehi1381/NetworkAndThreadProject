@@ -1,5 +1,6 @@
 package client.Socket;
 
+import client.ClientConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import shared.Response.Response;
@@ -17,30 +18,30 @@ public class SocketRequestSender {
     private final ObjectMapper objectMapper;
 
     public SocketRequestSender() throws IOException {
-        this.socket = new Socket("127.0.0.1", 8080);
+        this.socket = new Socket("127.0.0.1", 4321);
         printStream = new PrintStream(socket.getOutputStream());
         scanner = new Scanner(socket.getInputStream());
-        objectMapper = new ObjectMapper();
-        objectMapper.activateDefaultTyping(
-                BasicPolymorphicTypeValidator.builder().allowIfBaseType(Response.class).build(),
-                ObjectMapper.DefaultTyping.EVERYTHING);
+        this.objectMapper = ClientConfig.getObjectMapper(); // Use configured ObjectMapper
     }
 
 
     public Response sendRequest(Request request) throws IOException {
         try {
-            String s = null;
             printStream.println(objectMapper.writeValueAsString(request));
-            if (scanner.hasNextLine()){
-             s = scanner.nextLine();
+            if (scanner.hasNextLine()) {
+                String response = scanner.nextLine();
+                System.out.println("Received response: " + response); // Add this line
+                return objectMapper.readValue(response, Response.class);
+            } else {
+                throw new IOException("No response from server");
             }
-            return objectMapper.readValue(s, Response.class);
         } catch (Exception e) {
             System.out.println(e);
             close();
             throw e;
         }
     }
+
 
 
     public void close() {

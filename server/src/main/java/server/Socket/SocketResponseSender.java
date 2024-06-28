@@ -2,6 +2,7 @@ package server.Socket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import server.ServerConfig;
 import shared.Request.Request;
 import shared.Response.Response;
 
@@ -20,10 +21,7 @@ public class SocketResponseSender {
         this.socket = socket;
         printStream = new PrintStream(socket.getOutputStream());
         scanner = new Scanner(socket.getInputStream());
-        objectMapper = new ObjectMapper();
-        objectMapper.activateDefaultTyping(
-                BasicPolymorphicTypeValidator.builder().allowIfBaseType(Response.class).build(),
-                ObjectMapper.DefaultTyping.EVERYTHING);
+        this.objectMapper = ServerConfig.getObjectMapper(); // Use configured ObjectMapper
     }
 
 
