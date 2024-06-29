@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +22,19 @@ public class User{
         this.username = username;
         this.password = password;
         id = UUID.randomUUID();
+        files = new ArrayList<>();
+    }
+
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
+    }
+
+    public void addFile(File file) {
+        files.add(file);
     }
 
     // Default constructor for deserialization

@@ -14,7 +14,8 @@ import shared.Response.Response;
         @JsonSubTypes.Type(value = LoginRequest.class, name = "LoginReq"),
         @JsonSubTypes.Type(value = ValidUsernameRequest.class, name = "ValidUsernameRequest"),
         @JsonSubTypes.Type(value = UserNameExistRequest.class, name = "UsernameExistRequest"),
-        @JsonSubTypes.Type(value = CheckPasswordRequest.class, name = "CheckPasswordRequest")
+        @JsonSubTypes.Type(value = CheckPasswordRequest.class, name = "CheckPasswordRequest"),
+        @JsonSubTypes.Type(value = SeeFilesRequest.class, name = "SeeFilesRequest")
 })
 public interface Request {
     Response run(RequestHandler requestHandler);

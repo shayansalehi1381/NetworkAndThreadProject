@@ -11,4 +11,5 @@ public interface RequestHandler {
     Response handleUsernameExistRequest(UserNameExistRequest userNameExistRequest);
 
    Response handleCheckPasswordRequest(CheckPasswordRequest checkPasswordRequest);
+   Response handleSeeFilesRequest(SeeFilesRequest seeFilesRequest);
 }

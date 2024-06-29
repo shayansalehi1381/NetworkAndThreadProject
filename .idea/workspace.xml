@@ -6,8 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="382cc8a9-36b2-442f-869b-0c47645b9ba9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/client/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/client/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/client/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/client/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/Socket/SocketStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/Socket/SocketStarter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Request/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Request/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Request/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Request/RequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/LoginResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/LoginResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/Response.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/ResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/ResponseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +116,7 @@
       <workItem from="1719587374903" duration="128000" />
       <workItem from="1719587512660" duration="298000" />
       <workItem from="1719587825888" duration="2330000" />
-      <workItem from="1719591176129" duration="11381000" />
+      <workItem from="1719591176129" duration="30409000" />
     </task>
     <servers />
   </component>

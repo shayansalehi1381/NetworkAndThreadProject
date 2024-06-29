@@ -54,5 +54,19 @@ public class DataBase {
         }
     }
 
+    public User getUserByUsername(String username){
+        for (User user:users){
+            if (user.getUsername().equals(username)){
+                return user;
+            }
+        }
+        return null;
+    }
 
+    public void addFileToUser(String username, String fileName) {
+        User user = getUserByUsername(username);
+        if (user != null) {
+            user.getFiles().add(new File(fileName));
+        }
+    }
 }

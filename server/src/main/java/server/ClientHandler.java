@@ -96,4 +96,10 @@ public class ClientHandler extends Thread implements RequestHandler {
         checkPasswordResponse.ableToLogin = false;
         return checkPasswordResponse;
     }
+
+    @Override
+    public Response handleSeeFilesRequest(SeeFilesRequest seeFilesRequest) {
+        SeeFilesResponse seeFilesResponse = new SeeFilesResponse(dataBase.getUserByUsername(seeFilesRequest.getUsername()).getFiles());
+       return seeFilesResponse;
+    }
 }
