@@ -6,7 +6,9 @@ import shared.Model.User;
 import shared.Request.*;
 import shared.Response.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class ClientHandler extends Thread implements RequestHandler {
 
@@ -46,6 +48,13 @@ public class ClientHandler extends Thread implements RequestHandler {
     @Override
     public Response handleSignUpRequest(SignUpRequest signUpRequest) {
         User user = new User(signUpRequest.getUsername(),signUpRequest.getPassword());
+        File newFolder = new File("C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\server\\src\\main\\java\\server\\data\\" + signUpRequest.getUsername());
+        boolean created = newFolder.mkdirs();
+        if (created) {
+            System.out.println("Folder created successfully at: " + newFolder.getPath());
+        } else {
+            System.out.println("Failed to create the folder at: " + newFolder.getPath());
+        }
         dataBase.getUsers().add(user);
         dataBase.saveUsers();
         return new SignUpResponse();
@@ -66,7 +75,7 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleLoginRequest(LoginRequest loginRequest) {
-        return new LoginResponse();
+        return new LoginResponse(loginRequest.getUsername());
     }
 
     @Override
@@ -99,7 +108,8 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleSeeFilesRequest(SeeFilesRequest seeFilesRequest) {
-        SeeFilesResponse seeFilesResponse = new SeeFilesResponse(dataBase.getUserByUsername(seeFilesRequest.getUsername()).getFiles());
+        List<String> fileNames = dataBase.listFilesUsingFileClass("C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\server\\src\\main\\java\\server\\data\\"+seeFilesRequest.getUsername());
+        SeeFilesResponse seeFilesResponse = new SeeFilesResponse(fileNames);
        return seeFilesResponse;
     }
 }

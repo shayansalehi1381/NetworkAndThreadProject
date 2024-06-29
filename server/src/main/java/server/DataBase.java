@@ -69,4 +69,26 @@ public class DataBase {
             user.getFiles().add(new File(fileName));
         }
     }
+
+    public  List<String> listFilesUsingFileClass(String folderPath) {
+        List<String> fileNames = new ArrayList<>();
+        File folder = new File(folderPath);
+
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        fileNames.add(file.getName());
+                    }
+                }
+            } else {
+                System.out.println("No files found in the directory.");
+            }
+        } else {
+            System.out.println("Specified directory does not exist or is not a directory.");
+        }
+
+        return fileNames;
+    }
 }

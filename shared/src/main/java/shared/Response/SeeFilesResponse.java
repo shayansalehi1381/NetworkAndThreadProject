@@ -9,16 +9,19 @@ import java.util.List;
 @JsonTypeName("SeeFilesResponse")
 public class SeeFilesResponse implements Response {
 
-    private List<File> files;
-    public SeeFilesResponse(List<File> files){
+    private List<String> files;
+    public SeeFilesResponse(List<String> files){
         this.files = files;
     }
 
-    public List<File> getFiles() {
+    public SeeFilesResponse() {
+    }
+
+    public List<String> getFiles() {
         return files;
     }
 
-    public void setFiles(List<File> files) {
+    public void setFiles(List<String> files) {
         this.files = files;
     }
 

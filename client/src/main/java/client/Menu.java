@@ -23,31 +23,31 @@ public class Menu implements ResponseHandler {
     private boolean isUsernameValid = false;
     private boolean isAbleToLogin = false;
     private boolean isUsernameExists = true;//this is for Login
-    public Menu(SocketRequestSender socketRequestSender){
+
+    public Menu(SocketRequestSender socketRequestSender) {
         this.socketRequestSender = socketRequestSender;
     }
 
 
-    public void startMenu(){
+    public void startMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome!");
 
-        while (true){
+        while (true) {
             System.out.println("What do you want to do?");
             System.out.println("1.login");
             System.out.println("2.sign up");
 
             try {
                 int input = scanner.nextInt();
-                if (input == 1){
+                if (input == 1) {
                     login(scanner);
                     break;
-                }
-                else if (input == 2){
+                } else if (input == 2) {
                     signUp(scanner);
                     break;
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("wrong input! try again.");
                 System.out.println("***********************");
                 scanner.next();
@@ -56,8 +56,7 @@ public class Menu implements ResponseHandler {
     }
 
 
-
-    private void signUp(Scanner scanner){
+    private void signUp(Scanner scanner) {
         System.out.println("Choose your Username:");
         String username = scanner.next();
         if (ValidUsername(username)) {
@@ -74,7 +73,8 @@ public class Menu implements ResponseHandler {
             signUp(scanner);
         }
     }
-    public  String hashPassword(String password) {
+
+    public String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] passwordBytes = password.getBytes();
@@ -89,34 +89,32 @@ public class Menu implements ResponseHandler {
         }
     }
 
-    private void login(Scanner scanner){
+    private void login(Scanner scanner) {
         System.out.println("Type your username:");
         String username = scanner.next();
-        if (usernameExists(username)){
+        if (usernameExists(username)) {
             System.out.println("Type your Password:");
             String password = scanner.next();
             String hashPassword = hashPassword(password);
-            if (checkPassword(username,hashPassword)){
+            if (checkPassword(username, hashPassword)) {
                 try {
-                    socketRequestSender.sendRequest(new LoginRequest()).run(this);
-                    System.out.println("Hello "+username);
+                    socketRequestSender.sendRequest(new LoginRequest(username)).run(this);
+                    System.out.println("Hello " + username);
                     usernameForUDMenu = username;
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 System.out.println("Wrong PassWord! try again.");
                 login(scanner);
             }
-        }
-        else {
+        } else {
             System.out.println("This Username does not Exist in the DataBase! try again.");
             login(scanner);
         }
     }
 
-    private boolean ValidUsername(String username){
+    private boolean ValidUsername(String username) {
         try {
             ValidUsernameResponse response = (ValidUsernameResponse) socketRequestSender.sendRequest(new ValidUsernameRequest(username));
             response.run(this);
@@ -126,9 +124,9 @@ public class Menu implements ResponseHandler {
         }
     }
 
-    private boolean checkPassword(String username,String pass){
+    private boolean checkPassword(String username, String pass) {
         try {
-            socketRequestSender.sendRequest(new CheckPasswordRequest(username,pass)).run(this);
+            socketRequestSender.sendRequest(new CheckPasswordRequest(username, pass)).run(this);
             return isAbleToLogin;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -136,7 +134,7 @@ public class Menu implements ResponseHandler {
     }
 
 
-    public boolean usernameExists(String username){
+    public boolean usernameExists(String username) {
         try {
             socketRequestSender.sendRequest(new UserNameExistRequest(username)).run(this);
             return isUsernameExists;
@@ -154,6 +152,8 @@ public class Menu implements ResponseHandler {
 
     @Override
     public void handleLoginResponse(LoginResponse loginResponse) {
+        System.out.println(loginResponse.getUsername());
+        usernameForUDMenu = loginResponse.getUsername();
         System.out.println("**************************************************");
         System.out.println("login Successful!");
         try {
@@ -182,8 +182,7 @@ public class Menu implements ResponseHandler {
     }
 
 
-
-//************************************************************************************************************************************
+    //************************************************************************************************************************************
     public void startUDMenu() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -209,7 +208,6 @@ public class Menu implements ResponseHandler {
             }
         }
     }
-
 
 
     private void seeFiles(Scanner scanner) {
@@ -255,7 +253,7 @@ public class Menu implements ResponseHandler {
         System.out.println("Enter the file name to download:");
         String fileName = scanner.next();
         try {
-            byte[] fileData = udPclient.downloadFile(fileName,usernameForUDMenu);
+            byte[] fileData = udPclient.downloadFile(fileName, usernameForUDMenu);
             try (FileOutputStream fos = new FileOutputStream(fileName)) {
                 fos.write(fileData);
                 System.out.println("File downloaded successfully.");
@@ -268,7 +266,9 @@ public class Menu implements ResponseHandler {
 
     @Override
     public void handleSeeFilesResponse(SeeFilesResponse seeFilesResponse) {
-        seeFilesResponse.getFiles();
-        System.out.println("asdwd");
+        for (int i = 0; i < seeFilesResponse.getFiles().size(); i++) {
+            System.out.println(i+1 + ": " + seeFilesResponse.getFiles().get(i));
+        }
+        System.out.println("*********************************************************");
     }
 }
