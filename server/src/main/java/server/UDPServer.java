@@ -13,12 +13,15 @@ import java.nio.file.Paths;
 
 public class UDPServer extends Thread {
     private DatagramSocket socket;
+    private DatagramSocket socket2;
     private final int port;
     DataBase dataBase;
+    private String address = "127.0.0.1";
 
     public UDPServer(int port, DataBase dataBase) throws IOException {
         this.port = port;
         socket = new DatagramSocket(port);
+        socket2 = new DatagramSocket();
         this.dataBase = dataBase;
     }
 
@@ -38,9 +41,6 @@ public class UDPServer extends Thread {
                         continue;
                     }
                     String username = parts[1];
-                    System.out.println(received
-
-                    );
                     String fileName = parts[2];
 
                     // Create a new DatagramPacket to receive the actual file data
@@ -48,8 +48,6 @@ public class UDPServer extends Thread {
                     socket.receive(filePacket);
 
                     handleUpload(filePacket, username, fileName);
-                } else if (received.startsWith("DOWNLOAD")) {
-                    handleDownload(packet, received.substring(9).trim());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -78,18 +76,22 @@ public class UDPServer extends Thread {
         }
     }
 
-    private void handleDownload(DatagramPacket packet, String fileName) throws IOException {
-        File file = new File(fileName);
-        if (file.exists()) {
-            byte[] fileData = Files.readAllBytes(Paths.get(fileName));
-            InetAddress address = packet.getAddress();
-            int port = packet.getPort();
-            DatagramPacket sendPacket = new DatagramPacket(fileData, fileData.length, address, port);
-            socket.send(sendPacket);
-            System.out.println("File sent: " + fileName);
-        } else {
-            System.out.println("File not found: " + fileName);
+    public void handleDownload(byte[] fileData, String username, String fileName) throws IOException {
+        String uploadCommand = "DOWNLOAD " + username + " " + fileName;
+        byte[] sendData = uploadCommand.getBytes();
+        DatagramPacket packet = new DatagramPacket(sendData, sendData.length, InetAddress.getByName(address), 8080);
+        socket2.send(packet);
+
+        // Adding some delay to ensure the server has received the command part
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+
+        packet = new DatagramPacket(fileData, fileData.length, InetAddress.getByName(address), 8080);
+        socket2.send(packet);
+        System.out.println("File uploaded: " + fileName);
     }
 
     public void close() {

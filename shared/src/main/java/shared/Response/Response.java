@@ -16,7 +16,8 @@ public interface Response {
             @JsonSubTypes.Type(value = ValidUsernameResponse.class, name = "ValidUsernameResponse"),
             @JsonSubTypes.Type(value = CheckPasswordResponse.class, name = "CheckPasswordResponse"),
             @JsonSubTypes.Type(value = UserNameExistResponse.class, name = "UsernameExistResponse"),
-            @JsonSubTypes.Type(value = SeeFilesResponse.class, name = "SeeFilesResponse")
+            @JsonSubTypes.Type(value = SeeFilesResponse.class, name = "SeeFilesResponse"),
+            @JsonSubTypes.Type(value = DownloadFileNameResponse.class, name = "downloadFileNameResponse"),
 
     })
     void run(ResponseHandler responseHandler);

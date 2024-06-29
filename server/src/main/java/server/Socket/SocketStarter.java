@@ -22,7 +22,7 @@ public class SocketStarter extends Thread {
 
             while (true) {
                 Socket socket = serverSocket.accept();
-                new ClientHandler(new SocketResponseSender(socket), dataBase).start();
+                new ClientHandler(new SocketResponseSender(socket), dataBase, udpServer).start();
             }
         } catch (Exception e) {
             e.printStackTrace();

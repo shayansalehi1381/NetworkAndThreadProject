@@ -9,4 +9,5 @@ public interface ResponseHandler {
     void handleUsernameExistResponse(UserNameExistResponse userNameExistResponse);
     void handleCheckPasswordResponse(CheckPasswordResponse checkPasswordResponse);
     void  handleSeeFilesResponse(SeeFilesResponse seeFilesResponse);
+    void handleDownloadFileNameResponse(DownloadFileNameResponse downloadFileNameResponse);
 }

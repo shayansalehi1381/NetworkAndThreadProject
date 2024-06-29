@@ -158,6 +158,7 @@ public class Menu implements ResponseHandler {
         System.out.println("login Successful!");
         try {
             udPclient = new UDPclient("127.0.0.1", 4322);
+            udPclient.start();
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         } catch (SocketException e) {
@@ -253,11 +254,7 @@ public class Menu implements ResponseHandler {
         System.out.println("Enter the file name to download:");
         String fileName = scanner.next();
         try {
-            byte[] fileData = udPclient.downloadFile(fileName, usernameForUDMenu);
-            try (FileOutputStream fos = new FileOutputStream(fileName)) {
-                fos.write(fileData);
-                System.out.println("File downloaded successfully.");
-            }
+            socketRequestSender.sendRequest(new DownloadFileNameRequest(fileName, usernameForUDMenu)).run(this);
         } catch (IOException e) {
             System.out.println("File download failed: " + e.getMessage());
         }
@@ -270,5 +267,14 @@ public class Menu implements ResponseHandler {
             System.out.println(i+1 + ": " + seeFilesResponse.getFiles().get(i));
         }
         System.out.println("*********************************************************");
+    }
+
+    @Override
+    public void handleDownloadFileNameResponse(DownloadFileNameResponse downloadFileNameResponse) {
+        if (downloadFileNameResponse.getRes()!= null){
+            System.out.println("the given file doesn't exist");
+        } else {
+            System.out.println("file downloaded successfully");
+        }
     }
 }

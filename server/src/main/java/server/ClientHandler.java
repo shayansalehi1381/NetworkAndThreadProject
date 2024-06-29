@@ -7,6 +7,7 @@ import shared.Request.*;
 import shared.Response.*;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -14,13 +15,14 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     private SocketResponseSender socketResponseSender;
     private DataBase dataBase;
+    private UDPServer udpServer;
 
 
-    public ClientHandler(SocketResponseSender socketResponseSender, DataBase dataBase) {
+    public ClientHandler(SocketResponseSender socketResponseSender, DataBase dataBase, UDPServer udpServer) {
+        this.udpServer = udpServer;
         this.dataBase = dataBase;
         this.socketResponseSender = socketResponseSender;
     }
-
 
 
     @Override
@@ -47,7 +49,7 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleSignUpRequest(SignUpRequest signUpRequest) {
-        User user = new User(signUpRequest.getUsername(),signUpRequest.getPassword());
+        User user = new User(signUpRequest.getUsername(), signUpRequest.getPassword());
         File newFolder = new File("C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\server\\src\\main\\java\\server\\data\\" + signUpRequest.getUsername());
         boolean created = newFolder.mkdirs();
         if (created) {
@@ -70,7 +72,7 @@ public class ClientHandler extends Thread implements RequestHandler {
             }
         }
         validUsernameResponse.valid = true;
-        return  validUsernameResponse;
+        return validUsernameResponse;
     }
 
     @Override
@@ -81,8 +83,8 @@ public class ClientHandler extends Thread implements RequestHandler {
     @Override
     public Response handleUsernameExistRequest(UserNameExistRequest userNameExistRequest) {
         UserNameExistResponse userNameExistResponse = new UserNameExistResponse();
-        for (User user : dataBase.getUsers()){
-            if (userNameExistRequest.getUsername().equals(user.getUsername())){
+        for (User user : dataBase.getUsers()) {
+            if (userNameExistRequest.getUsername().equals(user.getUsername())) {
                 userNameExistResponse.exists = true;
                 return userNameExistResponse;
             }
@@ -94,11 +96,11 @@ public class ClientHandler extends Thread implements RequestHandler {
     @Override
     public Response handleCheckPasswordRequest(CheckPasswordRequest checkPasswordRequest) {
         CheckPasswordResponse checkPasswordResponse = new CheckPasswordResponse();
-        for (User user:dataBase.getUsers()){
-            if (checkPasswordRequest.getUsername().equals(user.getUsername())){
-                if (checkPasswordRequest.getPassword().equals(user.getPassword())){
-                     checkPasswordResponse.ableToLogin = true;
-                     return checkPasswordResponse;
+        for (User user : dataBase.getUsers()) {
+            if (checkPasswordRequest.getUsername().equals(user.getUsername())) {
+                if (checkPasswordRequest.getPassword().equals(user.getPassword())) {
+                    checkPasswordResponse.ableToLogin = true;
+                    return checkPasswordResponse;
                 }
             }
         }
@@ -108,8 +110,28 @@ public class ClientHandler extends Thread implements RequestHandler {
 
     @Override
     public Response handleSeeFilesRequest(SeeFilesRequest seeFilesRequest) {
-        List<String> fileNames = dataBase.listFilesUsingFileClass("C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\server\\src\\main\\java\\server\\data\\"+seeFilesRequest.getUsername());
+        List<String> fileNames = dataBase.listFilesUsingFileClass("C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\server\\src\\main\\java\\server\\data\\" + seeFilesRequest.getUsername());
         SeeFilesResponse seeFilesResponse = new SeeFilesResponse(fileNames);
-       return seeFilesResponse;
+        return seeFilesResponse;
+    }
+
+    @Override
+    public Response handleDownloadFileNameRequest(DownloadFileNameRequest downloadFileNameRequest) {
+        String FilePath = "C:\\Users\\shaya\\IdeaProjects\\AP-assignment5\\server\\src\\main\\java\\server\\data\\" + downloadFileNameRequest.getUsername() + "\\" + downloadFileNameRequest.getFileName();
+        File file = new File(FilePath);
+        if (file.exists()) {
+            try (FileInputStream fis = new FileInputStream(file)) {
+                byte[] fileData = new byte[(int) file.length()];
+                fis.read(fileData);
+                udpServer.handleDownload(fileData, downloadFileNameRequest.getUsername(), file.getName());
+                System.out.println("File Sent to client successfully.");
+            } catch (IOException e) {
+                System.out.println("File download failed: " + e.getMessage());
+            }
+        } else {
+            return new DownloadFileNameResponse("the file doesn't exist");
+        }
+        return new DownloadFileNameResponse();
+
     }
 }

@@ -12,4 +12,5 @@ public interface RequestHandler {
 
    Response handleCheckPasswordRequest(CheckPasswordRequest checkPasswordRequest);
    Response handleSeeFilesRequest(SeeFilesRequest seeFilesRequest);
+   Response handleDownloadFileNameRequest(DownloadFileNameRequest downloadFileNameRequest);
 }

@@ -5,22 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="382cc8a9-36b2-442f-869b-0c47645b9ba9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/DownloadFileNameRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/DownloadFileNameResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/client/UDPclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/client/UDPclient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/client/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/client/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instagram.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipe2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/client/UDPclient.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/client/UDPclient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Socket/SocketStarter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/UDPServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/server/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/server/DataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/DataBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/Socket/SocketStarter.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/Socket/SocketStarter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/server/UDPServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/UDPServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/SeeFilesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/SeeFilesResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/LoginResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/LoginResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Request/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/shared/Response/ResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Request/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Request/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Request/RequestHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Request/RequestHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/Response.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/target/classes/shared/Response/ResponseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/shared/target/classes/shared/Response/ResponseHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

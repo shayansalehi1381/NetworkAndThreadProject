@@ -30,7 +30,7 @@ public class SocketRequestSender {
             printStream.println(objectMapper.writeValueAsString(request));
             if (scanner.hasNextLine()) {
                 String response = scanner.nextLine();
-                System.out.println("Received response: " + response); // Add this line
+//                System.out.println("Received response: " + response); // Add this line
                 return objectMapper.readValue(response, Response.class);
             } else {
                 throw new IOException("No response from server");
